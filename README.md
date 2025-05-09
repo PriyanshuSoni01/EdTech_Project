@@ -1,6 +1,6 @@
 # EdTech Platform
 
-StudyNotion is an advanced and comprehensive ed-tech platform that empowers users to seamlessly create, consume, and evaluate a wide range of educational content. Developed using the powerful and dynamic MERN stack, the platform leverages the collective strengths of ReactJS, NodeJS, MongoDB, and ExpressJS to deliver an intuitive, robust, and fully functional experience for both educators and learners alike. It is a versatile and intuitive ed-tech platform that is designed to provide an immersive learning experience to students and a platform for instructors to showcase their expertise.
+EduConnect is an advanced and comprehensive ed-tech platform that empowers users to seamlessly create, consume, and evaluate a wide range of educational content. Developed using the powerful and dynamic MERN stack, the platform leverages the collective strengths of ReactJS, NodeJS, MongoDB, and ExpressJS to deliver an intuitive, robust, and fully functional experience for both educators and learners alike. It is a versatile and intuitive ed-tech platform that is designed to provide an immersive learning experience to students and a platform for instructors to showcase their expertise.
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.txt)
 
