@@ -24,6 +24,7 @@ export default function Upload({
   const inputRef = useRef(null)
 
   const onDrop = (acceptedFiles) => {
+    console.log("onDrop called with files:", acceptedFiles)
     const file = acceptedFiles[0]
     if (file) {
       previewFile(file)
@@ -31,19 +32,37 @@ export default function Upload({
     }
   }
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    accept: !video
-      ? { "image/*": [".jpeg", ".jpg", ".png"] }
-      : { "video/*": [".mp4"] },
-    onDrop,
-  })
+  const onDropRejected = (rejectedFiles) => {
+    console.log("onDropRejected called with files:", rejectedFiles)
+    alert("File rejected. Please use a valid image file (JPEG, JPG, PNG)")
+  }
+
+  const { getRootProps, getInputProps, isDragActive, isDragReject } =
+    useDropzone({
+      accept: !video
+        ? { "image/*": [".jpeg", ".jpg", ".png"] }
+        : { "video/*": [".mp4"] },
+      onDrop,
+      onDropRejected,
+      multiple: false,
+      noClick: false,
+      noKeyboard: false,
+    })
 
   const previewFile = (file) => {
-    // console.log(file)
+    console.log("previewFile called with:", file)
     const reader = new FileReader()
     reader.readAsDataURL(file)
     reader.onloadend = () => {
       setPreviewSource(reader.result)
+    }
+  }
+
+  // Add click handler as backup
+  const handleClick = () => {
+    console.log("Upload area clicked")
+    if (inputRef.current) {
+      inputRef.current.click()
     }
   }
 
@@ -96,6 +115,8 @@ export default function Upload({
           <div
             className="flex w-full flex-col items-center p-6"
             {...getRootProps()}
+            onClick={handleClick}
+            style={{ cursor: "pointer" }}
           >
             <input {...getInputProps()} ref={inputRef} />
             <div className="grid aspect-square w-14 place-items-center rounded-full bg-pure-greys-800">
@@ -110,6 +131,10 @@ export default function Upload({
               <li>Aspect ratio 16:9</li>
               <li>Recommended size 1024x576</li>
             </ul>
+            {/* Debug info */}
+            <div className="mt-4 text-xs text-richblack-400">
+              Debug: Click area active, isDragActive: {isDragActive.toString()}
+            </div>
           </div>
         )}
       </div>
