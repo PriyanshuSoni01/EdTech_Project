@@ -22,8 +22,9 @@ mongoose.connect(process.env.MONGO_URL).then(()=>{
 })
 
 const app = express()
-app.listen(4000, ()=>{
-    console.log('Server is running on port 3000!!!')
+const port = process.env.PORT || 4000
+app.listen(port, ()=>{
+    console.log(`Server is running on port ${port}!!!`)
 })
 
 // Middlewares
