@@ -36,7 +36,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
 	cors({
-		origin: "https://educonnect-seven-phi.vercel.app/",
+		origin: "https://educonnect-n0lvn5fz2-priyanshu-sonis-projects-262accd0.vercel.app",
 		credentials: true,
 	})
 );
